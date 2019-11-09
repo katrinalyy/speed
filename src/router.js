@@ -4,7 +4,7 @@ import React from 'react';
 import GameIndex from './pages/game-index/game-index';
 import GameCenter from './pages/game-center/game-center';
 //引入一些模块
-import { BrowserRouter as Router, Route } from "react-router-dom";
+import { HashRouter as Router, Route } from "react-router-dom";
 
 function router() {
     return (

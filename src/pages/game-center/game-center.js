@@ -4,18 +4,20 @@ class GameCenter extends Component {
 	constructor(props) {
         super(props)
         this.state = {
-            score:0
+            score:0,
+            classNameStatus: false
         }
     }
 
     render() {
-        const { score } = this.state;
+        const { score, classNameStatus } = this.state;
         return (
             <div className="game-center-box">
                 <div className="game-center-score">{score}</div>
                 <div 
-                    className="game-center-btn" 
-                    onClick={this.speedClick.bind(this)} >
+                    className={classNameStatus ? 'game-center-btn-color':'game-center-btn'} 
+                    onTouchStart={this.speedClick.bind(this)} 
+                    onTouchEnd={this.speedClick.bind(this)}>
                 </div>
             </div>
         )
@@ -26,9 +28,19 @@ class GameCenter extends Component {
     }
 
     speedClick(e) {
-        let a = this.state.score;
-        this.setState({score:++a})
-        console.log(e.type)
+        if( e.type === 'touchstart'){
+            this.setState({
+                classNameStatus: true
+            })
+        }
+        if ( e.type === 'touchend' ) {
+            let a = this.state.score;
+            this.setState({
+                score: ++a,
+                classNameStatus: false
+            })
+        }
+        
        
     }
 }

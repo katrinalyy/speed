@@ -5,14 +5,17 @@ class GameCenter extends Component {
         super(props)
         this.state = {
             score:0,
-            classNameStatus: false
+            classNameStatus: false,
+            time:''
         }
+        this.timeConvert = this.timeConvert.bind(this); 
     }
 
     render() {
-        const { score, classNameStatus } = this.state;
+        const { score, classNameStatus, time } = this.state;
         return (
             <div className="game-center-box">
+                <div className="game-center-time">倒计时：{time}</div>
                 <div className="game-center-score">{score}</div>
                 <div 
                     className={classNameStatus ? 'game-center-btn-color':'game-center-btn'} 
@@ -21,6 +24,10 @@ class GameCenter extends Component {
                 </div>
             </div>
         )
+    }
+
+    componentWillMount(){
+        this.timeConvert(60);
     }
 
     back(){
@@ -40,8 +47,19 @@ class GameCenter extends Component {
                 classNameStatus: false
             })
         }
+    }
+
+    // 传入时间以s为单位
+    timeConvert(time){
+        console.log("time====",time)
+        time = parseInt(time);
+        const mm = Math.floor( time / 60 ).toString().padStart(2,'0');
+        const ss = (time % 60).toString().padStart(2,'0');
+        const timeString = `${mm}:${ss}`;
+        this.setState({
+            time: timeString
+        })
         
-       
     }
 }
 export default GameCenter;

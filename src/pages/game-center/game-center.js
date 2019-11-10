@@ -1,5 +1,15 @@
 import React, { Component } from 'react';
 import './game-center.css';
+const GameOver = (props)=> {
+    const { title, score, isGameOver} = props;
+    return (
+        isGameOver ?  <div className='game-over-box'>
+            <div className='score-max'>本次最高分：{score}</div>
+            <div className='score-max-title'>{title}</div>
+            <div className='again-button'>再来一次</div>
+        </div> : ''
+    )
+}
 class GameCenter extends Component {
 	constructor(props) {
         super(props)

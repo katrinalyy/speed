@@ -34,3 +34,45 @@
     background: url(./../../assets/finger_red.png) no-repeat center center;
     background-size: 130px auto;
 }
+
+.game-over-box {
+    position: absolute;
+    left:0;
+    top:0;
+    width:100%;
+    height:100%;
+    background:rgba(0,0,0, .8);
+    z-index:999;
+}
+
+.score-max {
+    font-size: 30px;
+    color:#fff;
+    margin:100px auto 0;
+    text-align: center;
+    width:200px;
+    height:50px;
+    line-height: 50px;
+}
+
+.score-max-title {
+    font-size: 20px;
+    color:#fff;
+    margin:40px auto 0;
+    text-align: center;
+    width:200px;
+    height:50px;
+    line-height: 50px;
+}
+
+.again-button {
+    font-size: 20px;
+    color:#fff;
+    margin:70px auto 0;
+    text-align: center;
+    width:200px;
+    height:50px;
+    background: rgb(0, 38, 255);
+    border-radius: 20px;
+    line-height: 50px;
+}

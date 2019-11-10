@@ -48,13 +48,10 @@ class GameCenter extends Component {
         )
     }
 
-    componentWillMount() {
+    componentDidMount() {
         // 初始化倒计时最开始时间
         this.timeLength = 30;
         this.timeConvert(this.timeLength);
-    }
-
-    componentDidMount() {
         // 开始倒计时
         this.startCountDown();
     }

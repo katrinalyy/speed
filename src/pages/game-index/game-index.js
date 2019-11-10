@@ -12,12 +12,16 @@ class GameIndex extends Component {
         const { score } = this.state;
         return (
             <div className="game-index-box">
+                <div className='game-index-talk'>
+                    最高分
+                    <div className='arrow'></div>
+                </div>
                 <div className="game-score-box">
                     <div className="score-bg"></div>
                     <div className="game-score">{score}</div>
                 </div>
                 
-                <div className="game-button" onClick={this.buttonClick.bind(this)}></div>
+                <div className="game-button"  onClick={this.buttonClick.bind(this)}></div>
             </div>
         )
     }

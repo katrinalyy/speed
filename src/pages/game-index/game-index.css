@@ -8,7 +8,7 @@
     width: 200px;
     height: 150px;
     position: absolute;
-    top: 180px;
+    top: 205px;
     left: 50%;
     transform: translate(-50%,-50%);
     background: url('./../../assets/score.png') no-repeat center center;
@@ -41,10 +41,51 @@
     position: absolute;
     left: 50%;
     bottom: 150px;
-    transform: translate(-50%,-50%);
+    transform: translate(-50%,50%);
     width: 200px;
     height: 50px;
     border-radius: 20%;
     box-shadow: 5px 1px 20px 12px beige;
     background: url('./../../assets/button.jpg') no-repeat center center;
+	animation: myfirst 1.5s linear  infinite alternate;
+	-webkit-animation: myfirst 1.5s linear  infinite alternate; /* Safari 与 Chrome */
+}
+
+@keyframes myfirst
+{
+    from { transform: translate(-50%,50%) scale(1);}
+    to { transform: translate(-50%,50%) scale(.5)}
+}
+ 
+@-webkit-keyframes myfirst /* Safari 与 Chrome */
+{
+    from { transform: scale(.5);}
+    to { transform: scale(2)}
+}
+
+.game-index-talk {
+    position: absolute;
+    top: -20px;
+    left: 50%;
+    transform: translate(-50%,50%);
+    width: 134px;
+    height:100px;
+    border-radius: 50%;
+    background: #000;
+    background-size: 160px auto;
+    line-height: 100px;
+    color:#fff;
+    font-size: 20px;
+    text-align: center;
+}
+
+.arrow {
+    position: absolute;
+    bottom:-8px;
+    left:50px;
+    width:0;
+    height:0;
+    border-right:10px solid transparent;
+	border-left:10px solid transparent;
+	border-top:10px solid #000;
 }

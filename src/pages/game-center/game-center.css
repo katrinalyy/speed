@@ -6,7 +6,7 @@
     color: #fff;
 }
 
-.game-center-time{
+.game-center-time {
     position: absolute;
     top: 50px;
     left: 50%;
@@ -44,4 +44,43 @@
 .game-center-btn-color {
     background: url(./../../assets/finger_red.png) no-repeat center center;
     background-size: 130px auto;
+}
+
+.game-over-box {
+    position: absolute;
+    left:0;
+    top:0;
+    width:100%;
+    height:100%;
+    background:rgba(0,0,0, .8);
+    z-index:999;
+}
+
+.score-max {
+    width:400px;
+    height:50px;
+    font-size: 30px;
+    margin:100px auto 0;
+    text-align: center;
+    line-height: 50px;
+}
+
+.score-max-title {
+    width:200px;
+    height:50px;
+    font-size: 20px;
+    margin:40px auto 0;
+    text-align: center;
+    line-height: 50px;
+}
+
+.again-button {
+    width:200px;
+    height:50px;
+    font-size: 20px;
+    margin:70px auto 0;
+    text-align: center;
+    background: rgb(0, 38, 255);
+    border-radius: 20px;
+    line-height: 50px;
 }

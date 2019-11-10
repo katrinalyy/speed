@@ -21,6 +21,7 @@ class GameIndex extends Component {
                     <div className="game-score">{score}</div>
                 </div>
                 <div className="game-button" onClick={this.buttonClick.bind(this)}></div>
+                <div className='clear-history-storage'> 一键清除历史记录</div>
             </div>
         )
     }

@@ -89,3 +89,18 @@
 	border-left:10px solid transparent;
 	border-top:10px solid #000;
 }
+
+.clear-history-storage {
+    position: absolute;
+    left: 50%;
+    bottom:50px;
+    transform: translate(-50%,50%);
+    width: 200px;
+    height: 40px;
+    background: #CCC;
+    text-align: center;
+    border-radius: 10px;
+    line-height: 40px;
+    color:red;
+    font-weight: 900;
+}

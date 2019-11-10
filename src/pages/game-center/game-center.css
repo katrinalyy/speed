@@ -54,6 +54,7 @@
     height:100%;
     background:rgba(0,0,0, .8);
     z-index:999;
+    overflow: hidden;
 }
 
 .score-max {
@@ -65,13 +66,18 @@
     line-height: 50px;
 }
 
-.score-max-title {
+.score-max-title, 
+.score-max-title-new {
     width:200px;
     height:50px;
     font-size: 20px;
     margin:40px auto 0;
     text-align: center;
     line-height: 50px;
+}
+
+.score-max-title-new {
+    color: #53ff53;
 }
 
 .again-button {

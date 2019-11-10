@@ -1,8 +1,8 @@
 function setStorage(key, val) {
-    localStorage.setItem(key, val);
+    localStorage.setItem(key, JSON.stringify(val));
 }
 
-function getStoragee(key) {
+function getStorage(key) {
   return localStorage.getItem(key);
 }
 
@@ -10,8 +10,8 @@ function rmStorage(key) {
     localStorage.removeItem(key);
 }
 
-export default {
+export {
     setStorage,
-    getStoragee,
+    getStorage,
     rmStorage
 }

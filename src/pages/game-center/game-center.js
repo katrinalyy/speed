@@ -1,20 +1,25 @@
 import React, { Component } from 'react';
 import './game-center.css';
+import actions from '../../store/actions';
+import store from '../../store';
 
 const EVALUATE = {
     DEFAULT: '你神游了！！！！',
     ONE: '你好菜啊!',
     TWO: '还得努力呦!',
     THREE: '你好棒啊!',
-    FOUR: '哇! 大神操作.'
+    FOUR: '哇! 大神操作.',
+    SIX: '破纪录啦!'
 }
 
+const defaultTime = 10;
+
 const GameOver = (props) => {
-    const { title, score, isGameOver, againStart } = props;
+    const { title, score, isGameOver, againStart, recordBreakStatus } = props;
     return (
         isGameOver ? <div className='game-over-box'>
             <div className='score-max'>本次最高分：{score}</div>
-            <div className='score-max-title'>{title}</div>
+            <div className={recordBreakStatus ? 'score-max-title-new' : 'score-max-title'}>{title}</div>
             <div className='again-button' onClick={againStart}>再来一次</div>
         </div> : ''
     )
@@ -33,7 +38,7 @@ class GameCenter extends Component {
     }
 
     render() {
-        const { score, classNameStatus, time, gameover, title } = this.state;
+        const { score, classNameStatus, time, gameover, title, recordBreakStatus } = this.state;
         return (
             <div className="game-center-box">
                 <div className="game-center-time">倒计时：{time}</div>
@@ -43,14 +48,20 @@ class GameCenter extends Component {
                     onTouchStart={this.speedClick.bind(this)}
                     onTouchEnd={this.speedClick.bind(this)}>
                 </div>
-                <GameOver isGameOver={gameover} score={score} title={title} againStart={this.againStart.bind(this)} />
+                <GameOver 
+                    isGameOver={gameover} 
+                    score={score} 
+                    title={title} 
+                    againStart={this.againStart.bind(this)}
+                    recordBreakStatus={recordBreakStatus}
+                />
             </div>
         )
     }
 
     componentDidMount() {
         // 初始化倒计时最开始时间
-        this.timeLength = 30;
+        this.timeLength = defaultTime;
         this.timeConvert(this.timeLength);
         // 开始倒计时
         this.startCountDown();
@@ -97,9 +108,16 @@ class GameCenter extends Component {
     isGameOverFun() {
         // 倒计时为0后的处理
         const { score } = this.state;
-        const title = this.handleTitle(score);
-        this.setState({ gameover: true, title });
+        let title = this.handleTitle(score);
+        let recordBreakStatus = false;
         clearInterval(this.timer);
+        const highScore = store.getState() ? store.getState().score : 0;
+        if (!highScore || highScore < score) {
+            title = EVALUATE.SIX;
+            recordBreakStatus = true;
+            actions.highScore(score);
+        }
+        this.setState({ gameover: true, title, recordBreakStatus });
     }
 
     handleTitle(score) {
@@ -131,8 +149,12 @@ class GameCenter extends Component {
             score: 0,
             gameover: false,
         })
-        this.timeLength = 30;
+        this.timeLength = defaultTime;
         this.startCountDown();
+    }
+
+    componentWillUnmount(){
+        clearInterval(this.timer);
     }
 }
 export default GameCenter;
